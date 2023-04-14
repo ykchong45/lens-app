@@ -1,4 +1,0 @@
-{
-  "main": "dist/lens-protocol-domain-entities.cjs.js",
-  "module": "dist/lens-protocol-domain-entities.esm.js"
-}

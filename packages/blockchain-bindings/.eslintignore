@@ -1,3 +1,0 @@
-dist
-*.cjs
-src/graphql/generated.tsx

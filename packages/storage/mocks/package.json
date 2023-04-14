@@ -1,4 +1,0 @@
-{
-  "main": "dist/lens-protocol-storage-mocks.cjs.js",
-  "module": "dist/lens-protocol-storage-mocks.esm.js"
-}

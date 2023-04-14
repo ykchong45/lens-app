@@ -1,4 +1,0 @@
-{
-  "main": "dist/lens-protocol-domain-use-cases-profile.cjs.js",
-  "module": "dist/lens-protocol-domain-use-cases-profile.esm.js"
-}

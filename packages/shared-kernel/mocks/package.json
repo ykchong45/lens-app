@@ -1,4 +1,0 @@
-{
-  "main": "dist/lens-protocol-shared-kernel-mocks.cjs.js",
-  "module": "dist/lens-protocol-shared-kernel-mocks.esm.js"
-}
