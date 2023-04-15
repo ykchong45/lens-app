@@ -1,9 +1,40 @@
 import { useCreateProfile, useProfilesOwnedByMe } from '@lens-protocol/react-web';
+import React, { useState } from "react";
 
 import { UnauthenticatedFallback } from '../components/UnauthenticatedFallback';
 import { WhenLoggedInWithProfile } from '../components/auth/WhenLoggedInWithProfile';
 import { never } from '../utils';
 import { ProfileCard } from './components/ProfileCard';
+
+
+function FileLoader() {
+  const [selectedFile, setSelectedFile] = useState<Blob | undefined>();
+
+  function handleFile(event: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedFile(event.target?.files?.[0]);
+  }
+
+  function handleLoad() {
+    if (selectedFile) {
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        console.log(event.target?.result); // do something with the loaded file
+      };
+
+      reader.readAsText(selectedFile);
+    }
+  }
+
+  return (
+    <div>
+      <input type="file" accept=".pdf,image/*" onChange={handleFile} />
+      <button onClick={handleLoad} disabled={!selectedFile}>
+        Load File
+      </button>
+    </div>
+  );
+}
 
 function OwnedProfiles() {
   const { data } = useProfilesOwnedByMe();
@@ -42,6 +73,7 @@ export function CreateProfileForm() {
     <div>
       <form onSubmit={onSubmit}>
         <fieldset>
+          <FileLoader/>
           <label>
             Enter a profile handle:
             <br />
