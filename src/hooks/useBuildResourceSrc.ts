@@ -13,7 +13,9 @@ const extractIpfsHash = (ifpsUrl: string) => {
 };
 
 export const useBuildResourceSrc = (src: string) => {
-  if (ipfsRegex.test(src)) {
+  if (!src) {
+    return "https://guild.xyz/requirementLogos/lens.png"
+  } else if (ipfsRegex.test(src)) {
     return `${ipfsGateway}${extractIpfsHash(src)}`;
   }
 
