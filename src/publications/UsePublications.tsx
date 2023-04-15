@@ -6,12 +6,16 @@ import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
 
 import { Tabs, Tab, TabList, TabPanels, TabPanel, TabIndicator } from '@chakra-ui/react'
+import { useEffect, useState } from 'react';
 
-export function UsePublications() {
-
-  var metadataFilter_disease = {
-    restrictPublicationLocaleTo: 'en'
+export function UsePublications({ tag }) {
+  const metadataFilter_disease = {
+    restrictPublicationLocaleTo: tag
   }
+
+  useEffect(() => {
+    console.log("metadataFilter changed: ", metadataFilter_disease)
+  }, [metadataFilter_disease])
 
   const {
     data: publications,
@@ -20,15 +24,9 @@ export function UsePublications() {
     hasMore,
     observeRef,
   } = useInfiniteScroll(usePublications({
-    profileId: profileId('0x15'),
+    profileId: profileId('0x770a'),
     metadataFilter: metadataFilter_disease
   }));
-
-  console.log("debug error", error)
-  console.log("debug loading", loading)
-  console.log("debug hasMore", hasMore)
-  console.log("debug observeRef", observeRef)
-  console.log('debug publication', publications)
 
 
   if (loading) return <Loading />;
@@ -37,29 +35,48 @@ export function UsePublications() {
 
   return (
     <div>
+      {publications.map((publication) => (
+        <PublicationCard key={publication.id} publication={publication} />
+      ))}
+      {hasMore && <p ref={observeRef}>Loading more...</p>}
+    </div>
+  )
+
+}
+
+export function UsePublicationsWrapper() {
+  const [tag, setTag] = useState<string>('hi')
+
+
+
+  const CATEGORIES = [
+    { name: "HIV", tag: "hi" },
+    { name: "Depression", tag: "de" },
+    { name: "Mania", tag: "mn" }
+  ]
+
+  const handleTabChange = (tabIdx) => {
+    const selectedTag = CATEGORIES[tabIdx].tag
+    console.log("debug tab change ", tabIdx, selectedTag)
+    setTag(selectedTag)
+  }
+
+
+
+  return (
+    <div>
       <h1>
-        <code>usePublications</code>
+        Publications
       </h1>
-      <Tabs >
+      <Tabs onChange={handleTabChange}>
         <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
+          {CATEGORIES.map((item) => (
+            <Tab key={item.tag}>{item.name}</Tab>
+          ))}
         </TabList>
-        <TabPanels>
-          <TabPanel>
-            <p>one!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-        </TabPanels>
       </Tabs>
-      <div>
-        {publications.map((publication) => (
-          <PublicationCard key={publication.id} publication={publication} />
-        ))}
-        {hasMore && <p ref={observeRef}>Loading more...</p>}
-      </div>
+
+      <UsePublications tag={tag} />
     </div>
   );
 }

@@ -60,7 +60,7 @@ import { UseCreatePost } from './publications/UseCreatePost';
 import { UseHidePublication } from './publications/UseHidePublication';
 import { UseProfilePublicationsForSale } from './publications/UseProfilePublicationsForSale';
 import { UsePublication } from './publications/UsePublication';
-import { UsePublications } from './publications/UsePublications';
+import { UsePublicationsWrapper } from './publications/UsePublications';
 import { UseReaction } from './publications/UseReaction';
 import { UseReportPublication } from './publications/UseReportPublication';
 import { UseWhoCollectedPublication } from './publications/UseWhoCollectedPublication';
@@ -130,14 +130,14 @@ export function App() {
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/profile" element={<UseCreateProfile />} />
-                    <Route path="/publications" element={<UsePublications />} />
+                    <Route path="/publications" element={<UsePublicationsWrapper />} />
                     <Route path="/post" element={<UseCreatePost />} />
 
 
                     <Route path="/authentication" element={<AuthenticationPage />} />
 
                     <Route path="/publications/usePublication" element={<UsePublication />} />
-                    <Route path="/publications/usePublications" element={<UsePublications />} />
+                    <Route path="/publications/usePublications" element={<UsePublicationsWrapper />} />
                     <Route path="/publications/useComments" element={<UsePublication />} />
                     <Route
                       path="/publications/useCollectedPublications"
