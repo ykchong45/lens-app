@@ -100,7 +100,7 @@ type PublicationCardProps = {
   publication: Post | Comment | Mirror | PendingPost;
 };
 
-export function PublicationCard({ publication }: PublicationCardProps) {
+export function PublicationCard({ reactable, publication }: PublicationCardProps) {
   if (publication.__typename === 'PendingPost') {
     return (
       <article>
@@ -129,7 +129,9 @@ export function PublicationCard({ publication }: PublicationCardProps) {
       <Content
         publication={isMirrorPublication(publication) ? publication.mirrorOf : publication}
       />
-      <CardFooter
+      {
+        reactable && 
+        <CardFooter
         justify='space-between'
         flexWrap='wrap'
         sx={{
@@ -148,6 +150,8 @@ export function PublicationCard({ publication }: PublicationCardProps) {
           Share
         </Button>
       </CardFooter>
+      }
+      
     </Card>
   );
 }

@@ -36,7 +36,7 @@ export function UsePublications({ tag }) {
   return (
     <div>
       {publications.map((publication) => (
-        <PublicationCard key={publication.id} publication={publication} />
+        <PublicationCard reactable={false} key={publication.id} publication={publication} />
       ))}
       {hasMore && <p ref={observeRef}>Loading more...</p>}
     </div>
