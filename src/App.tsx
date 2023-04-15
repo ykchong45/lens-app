@@ -126,7 +126,7 @@ export function App() {
             <Router>
               <Header />
               <Center>
-                <Box width='80%' alignContent={'center'}>
+                <Box width='80%' alignContent={'center'} >
                   <Breadcrumbs />
                   <GenericErrorBoundary fallback={ErrorMessage}>
                     <Routes>

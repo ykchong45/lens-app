@@ -82,8 +82,8 @@ export default function Index(){
               </Flex>
             </Stack>
             <Stack pt={6}>
-              <Text align={'center'}>
-                Have no Wallet? <Link color={'blue.400'}>Apply</Link>
+              <Text align={'center'} color={'red.400'}>
+                We hope you have nice trips here!
               </Text>
             </Stack>
           </Stack>

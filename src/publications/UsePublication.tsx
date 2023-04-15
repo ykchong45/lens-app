@@ -75,7 +75,7 @@ export function UsePublication() {
         profile && <CommentComposer publisher={profile} publicationId={pubId} />
       }
 
-      <h3>Comments</h3>
+      {/* <h3>Comments</h3> */}
 
       <Comments commentsOf={publication.id} />
     </div>
