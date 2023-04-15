@@ -8,6 +8,8 @@ import {
 
 import { upload } from '../../upload';
 import { never } from '../../utils';
+import { Textarea, Button } from '@chakra-ui/react';
+import { BiArrowToRight } from 'react-icons/bi';
 
 type CommentComposerProps = {
   publisher: ProfileOwnedByMe;
@@ -41,18 +43,17 @@ export function CommentComposer({ publisher, publicationId }: CommentComposerPro
   return (
     <form onSubmit={submit}>
       <fieldset>
-        <textarea
-          name="content"
+
+        <Textarea name="content"
           rows={3}
           required
-          placeholder="Say gm...?"
+          placeholder="Gm to your buddy"
           style={{ resize: 'none' }}
-          disabled={isPending}
-        ></textarea>
+          disabled={isPending} />
 
-        <button type="submit" disabled={isPending}>
+        <Button leftIcon={<BiArrowToRight  />} colorScheme='teal' variant='solid' type="submit" disabled={isPending}>
           Comment
-        </button>
+        </Button>
 
         {error && <pre>{error.message}</pre>}
       </fieldset>

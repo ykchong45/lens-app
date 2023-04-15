@@ -1,7 +1,9 @@
 import {
   PublicationId,
   publicationId,
+  useActiveProfile,
   useComments,
+  useProfile,
   usePublication,
 } from '@lens-protocol/react-web';
 
@@ -9,6 +11,9 @@ import { ErrorMessage } from '../components/error/ErrorMessage';
 import { Loading } from '../components/loading/Loading';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
+
+import { CommentComposer } from './components/CommentComposer';
+import { useState } from 'react';
 
 type CommentsProps = {
   commentsOf: PublicationId;
@@ -38,11 +43,14 @@ function Comments({ commentsOf }: CommentsProps) {
 }
 
 export function UsePublication() {
+  const { data: profile } = useActiveProfile();
+  const [pubId, setPubId] = useState<PublicationId>(publicationId('0x1b-0x0118'));
+
   const {
     data: publication,
     error,
     loading,
-  } = usePublication({ publicationId: publicationId('0x1b-0x0118') });
+  } = usePublication({ publicationId: publicationId(pubId) });
 
   if (loading) return <Loading />;
 
@@ -54,6 +62,11 @@ export function UsePublication() {
         <code>usePublication</code>
       </h1>
       <PublicationCard publication={publication} />
+
+      {
+        profile && <CommentComposer publisher={profile} publicationId={pubId} />
+      }
+
       <h3>Comments</h3>
 
       <Comments commentsOf={publication.id} />
