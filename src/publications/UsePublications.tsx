@@ -74,10 +74,7 @@ export function UsePublicationsWrapper() {
 
   return (
     <div>
-      <h1>
-        Publications
-      </h1>
-      <Tabs onChange={handleTabChange}>
+      <Tabs onChange={handleTabChange} variant='soft-rounded'>
         <TabList>
           {CATEGORIES.map((item) => (
             <Tab key={item.tag}>{item.name}</Tab>
