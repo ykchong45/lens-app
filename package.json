@@ -28,6 +28,7 @@
     "react-cool-inview": "^3.0.1",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.1",
     "readable-web-to-node-stream": "^3.0.2",
     "wagmi": "0.12.7"

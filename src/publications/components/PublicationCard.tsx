@@ -12,6 +12,8 @@ import {
 } from '@lens-protocol/react-web';
 import { ReactNode } from 'react';
 import { useInView } from 'react-cool-inview';
+import { Card, CardHeader, CardBody, Flex, Avatar, Box, Heading, Text, IconButton, CardFooter, Button } from '@chakra-ui/react'
+import { BiLike, BiChat, BiShare } from 'react-icons/bi'
 
 import { ProfilePicture } from '../../profiles/components/ProfilePicture';
 import { formatAmount } from '../../utils';
@@ -78,8 +80,10 @@ function Content({ publication }: ContentProps) {
   }
 
   return (
-    <div ref={observe}>
-      <p>{data.metadata.content}</p>
+    <CardBody ref={observe}>
+      <Text>
+        {data.metadata.content}
+      </Text>
       {data.decryptionCriteria && (
         <small>
           <i>
@@ -88,7 +92,7 @@ function Content({ publication }: ContentProps) {
           </i>
         </small>
       )}
-    </div>
+    </CardBody>
   );
 }
 
@@ -106,16 +110,45 @@ export function PublicationCard({ publication }: PublicationCardProps) {
       </article>
     );
   }
+  // console.log("profile pic: ", publication.profile.picture.original.url)
 
   return (
-    <article>
-      <ProfilePicture picture={publication.profile.picture} />
-      <p>{publication.profile.name ?? `@${publication.profile.handle}`}</p>
+    <Card>
+      <CardHeader>
+        <Flex spacing='4'>
+          <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+            <ProfilePicture picture={publication.profile.picture} />
 
+            <Box>
+              <Heading size='sm'>{publication.profile.name}</Heading>
+              <Text>{`@${publication.profile.handle}`}</Text>
+            </Box>
+          </Flex>
+        </Flex>
+      </CardHeader>
       <Content
         publication={isMirrorPublication(publication) ? publication.mirrorOf : publication}
       />
-    </article>
+      <CardFooter
+        justify='space-between'
+        flexWrap='wrap'
+        sx={{
+          '& > button': {
+            minW: '136px',
+          },
+        }}
+      >
+        <Button flex='1' variant='ghost' leftIcon={<BiLike />}>
+          Like
+        </Button>
+        <Button flex='1' variant='ghost' leftIcon={<BiChat />}>
+          Comment
+        </Button>
+        <Button flex='1' variant='ghost' leftIcon={<BiShare />}>
+          Share
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
 

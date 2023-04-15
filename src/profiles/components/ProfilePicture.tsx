@@ -1,6 +1,7 @@
 import { Profile } from '@lens-protocol/react-web';
 
 import { useBuildResourceSrc } from '../../hooks/useBuildResourceSrc';
+import { Avatar } from '@chakra-ui/react';
 
 const PROFILE_PICTURE_SIZE = '4rem';
 
@@ -25,7 +26,7 @@ type RemoteProfilePictureProps = {
 function RemoteProfilePicture({ url }: RemoteProfilePictureProps) {
   const src = useBuildResourceSrc(url);
   return (
-    <img
+    <Avatar
       src={src}
       style={{
         height: PROFILE_PICTURE_SIZE,
