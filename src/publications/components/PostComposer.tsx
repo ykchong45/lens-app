@@ -17,12 +17,15 @@ export function PostComposer({ publisher }: PostComposerProps) {
 
     const formData = new FormData(form);
     const content = (formData.get('content') as string | null) ?? never();
+    console.log('debug: content', content)
 
     await create({
       content,
       contentFocus: ContentFocus.TEXT,
-      locale: 'en',
+      locale: 'zh'
     });
+
+    console.log('debug: post compose props ')
 
     form.reset();
   };

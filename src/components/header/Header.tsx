@@ -20,7 +20,7 @@ export function Header() {
         }}
       >
         <span>
-          <strong>🌿 Lens SDK</strong>
+          <strong>Hippocratic❤️ Island</strong>
         </span>
         <div
           style={{

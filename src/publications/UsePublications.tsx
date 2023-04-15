@@ -6,13 +6,28 @@ import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
 
 export function UsePublications() {
+
+  var metadataFilter_disease = {
+    restrictPublicationLocaleTo: 'en'
+  }
+
   const {
     data: publications,
     error,
     loading,
     hasMore,
     observeRef,
-  } = useInfiniteScroll(usePublications({ profileId: profileId('0x15') }));
+  } = useInfiniteScroll(usePublications({ 
+    profileId: profileId('0x770a'),
+    metadataFilter: metadataFilter_disease
+  }));
+
+  console.log("debug error", error)
+  console.log("debug loading", loading)
+  console.log("debug hasMore", hasMore)
+  console.log("debug observeRef", observeRef)
+  console.log('debug publication', publications)
+
 
   if (loading) return <Loading />;
 

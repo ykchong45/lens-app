@@ -13,7 +13,7 @@ import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
 
 import { CommentComposer } from './components/CommentComposer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type CommentsProps = {
   commentsOf: PublicationId;
@@ -45,6 +45,10 @@ function Comments({ commentsOf }: CommentsProps) {
 export function UsePublication() {
   const { data: profile } = useActiveProfile();
   const [pubId, setPubId] = useState<PublicationId>(publicationId('0x1b-0x0118'));
+
+  useEffect(() => {
+    console.log("profile: ", profile)
+  }, [profile])
 
   const {
     data: publication,
