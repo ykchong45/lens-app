@@ -1,40 +1,30 @@
 import { useWalletLogin, useWalletLogout } from '@lens-protocol/react-web';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
+import { useSigner } from 'wagmi';
 
-import { WhenLoggedInWithProfile } from './WhenLoggedInWithProfile';
-import { WhenLoggedOut } from './WhenLoggedOut';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export function LoginButton({ handle }: { handle?: string }) {
   const { execute: login, error: loginError, isPending: isLoginPending } = useWalletLogin();
   const { execute: logout, isPending: isLogoutPending } = useWalletLogout();
 
-  const { isConnected } = useAccount();
-  const { disconnectAsync } = useDisconnect();
+  const { data: signer, isError, isLoading } = useSigner()
 
-  const { connectAsync } = useConnect({
-    connector: new InjectedConnector(),
-  });
-
-  const onLoginClick = async () => {
-    if (isConnected) {
-      await disconnectAsync();
+  useEffect(() => {
+    const connectToLens = async () => {
+      console.log("have signer? ", signer)
+      if (signer) {
+        await login(signer, handle);
+        console.log("signer IN")
+      }
+      else {
+        await logout();
+        console.log("signer OUT")
+      }
     }
-
-    const { connector } = await connectAsync();
-
-    if (connector instanceof InjectedConnector) {
-      const signer = await connector.getSigner();
-      await login(signer, handle);
-    }
-  };
-
-  const onLogoutClick = async () => {
-    await logout();
-    await disconnectAsync();
-  };
+    connectToLens()
+  }, [signer])
 
   useEffect(() => {
     if (loginError) toast.error(loginError.message);
@@ -42,19 +32,7 @@ export function LoginButton({ handle }: { handle?: string }) {
 
   return (
     <>
-      <WhenLoggedInWithProfile>
-        {() => (
-          <button onClick={onLogoutClick} disabled={isLogoutPending}>
-            <strong>Log out</strong>
-          </button>
-        )}
-      </WhenLoggedInWithProfile>
-
-      <WhenLoggedOut>
-        <button onClick={onLoginClick} disabled={isLoginPending}>
-          <strong>Log in</strong>
-        </button>
-      </WhenLoggedOut>
+      <ConnectButton />
     </>
   );
 }
