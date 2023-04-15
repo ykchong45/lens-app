@@ -5,8 +5,9 @@ import { Loading } from '../components/loading/Loading';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
 
-import { Tabs, Tab, TabList, TabPanels, TabPanel, TabIndicator } from '@chakra-ui/react'
+import { Tabs, Tab, TabList, TabPanels, TabPanel, TabIndicator, LinkOverlay, LinkBox } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom'
 
 export function UsePublications({ tag }) {
   const metadataFilter_disease = {
@@ -28,6 +29,10 @@ export function UsePublications({ tag }) {
     metadataFilter: metadataFilter_disease
   }));
 
+  useEffect(() => {
+    console.log("debug pub id ", publications)
+  }, [publications])
+
 
   if (loading) return <Loading />;
 
@@ -36,7 +41,11 @@ export function UsePublications({ tag }) {
   return (
     <div>
       {publications.map((publication) => (
-        <PublicationCard reactable={false} key={publication.id} publication={publication} />
+        <LinkBox>
+          <LinkOverlay as={RouterLink} to={`/publication/${publication.id}`}>
+            <PublicationCard reactable={false} key={publication.id} publication={publication}  />
+          </LinkOverlay>
+        </LinkBox>
       ))}
       {hasMore && <p ref={observeRef}>Loading more...</p>}
     </div>

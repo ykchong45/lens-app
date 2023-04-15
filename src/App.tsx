@@ -131,6 +131,7 @@ export function App() {
                     <Route path="/" element={<Index />} />
                     <Route path="/profile" element={<UseCreateProfile />} />
                     <Route path="/publications" element={<UsePublicationsWrapper />} />
+                    <Route path="/publication/:id" element={<UsePublication />} />
                     <Route path="/post" element={<UseCreatePost />} />
 
 

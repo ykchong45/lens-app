@@ -15,6 +15,8 @@ import { PublicationCard } from './components/PublicationCard';
 import { CommentComposer } from './components/CommentComposer';
 import { useEffect, useState } from 'react';
 
+import { useParams } from "react-router-dom";
+
 type CommentsProps = {
   commentsOf: PublicationId;
 };
@@ -43,8 +45,13 @@ function Comments({ commentsOf }: CommentsProps) {
 }
 
 export function UsePublication() {
+  const { id } = useParams();
   const { data: profile } = useActiveProfile();
-  const [pubId, setPubId] = useState<PublicationId>(publicationId('0x1b-0x0118'));
+  const [pubId, setPubId] = useState<PublicationId>(publicationId(id || '0x1b-0x0118'));
+
+  useEffect(() => {
+    console.log("id updated: ", pubId)
+  }, [pubId])
 
   useEffect(() => {
     console.log("profile: ", profile)
@@ -62,9 +69,6 @@ export function UsePublication() {
 
   return (
     <div>
-      <h1>
-        <code>usePublication</code>
-      </h1>
       <PublicationCard publication={publication} />
 
       {
