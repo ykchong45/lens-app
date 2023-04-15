@@ -1,10 +1,60 @@
 import { useActiveProfile } from '@lens-protocol/react-web';
-import { Link, NavLink } from 'react-router-dom';
-
+import { Link,NavLink} from 'react-router-dom';//NavLink, Link,
+ 
 import { CATEGORIES } from '../../config';
 import { LoginButton } from '../auth/LoginButton';
 
-import { Stack, Box, Popover, PopoverTrigger } from '@chakra-ui/react';
+import { Stack, Popover, PopoverTrigger } from '@chakra-ui/react';//Box
+
+
+import { ReactNode } from 'react';
+import {
+  Flex,
+  Avatar,
+  HStack,
+  IconButton,
+  Button,
+  Box,
+  // Link,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  // Stack,
+  useDisclosure,
+  useColorModeValue,
+} from '@chakra-ui/react';
+
+
+export default function Navi() {
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+
+
+  return (
+    <>
+    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <HStack spacing={8} alignItems={'center'}>
+          {/* <Box>Logo</Box> */}
+          <HStack
+            as={'nav'}
+            spacing={4}
+            display={{ base: 'none', md: 'flex' }}>
+            {CATEGORIES.map(({ label, path }) => (
+              <NavLink key={path} to={path} >
+                {label}</NavLink>
+            ))}
+          </HStack>
+        </HStack>
+      </Flex>
+
+    </Box>
+    </>
+  )
+}
+
+
 
 export function Header() {
   const { data: profile } = useActiveProfile();
@@ -40,7 +90,10 @@ export function Header() {
         </div>
       </div>
 
-      <nav>
+      <Navi />
+
+
+      {/* <nav>
         {CATEGORIES.map(({ path, label }) => (
           <NavLink
             key={path}
@@ -50,7 +103,7 @@ export function Header() {
             {label}
           </NavLink>
         ))}
-      </nav>
+      </nav> */}
 
 
       {/* <Box>

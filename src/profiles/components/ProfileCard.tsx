@@ -1,6 +1,18 @@
 import { Profile } from '@lens-protocol/react-web';
 
 import { ProfilePicture } from './ProfilePicture';
+import {
+  Heading,
+  Avatar,
+  Box,
+  Center,
+  Image,
+  Flex,
+  Text,
+  Stack,
+  Button,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 type ProfileCardProps = {
   profile: Profile;
@@ -8,20 +20,45 @@ type ProfileCardProps = {
 
 export function ProfileCard({ profile }: ProfileCardProps) {
   return (
-    <article>
-      <ProfilePicture picture={profile.picture} />
-      <p>Handle: {profile.handle}</p>
-      {profile?.name && <p>Name: {profile.name}</p>}
-      {profile?.bio && <p>Bio: {profile.bio}</p>}
-      <ul>
-        {Object.entries(profile.attributes).map(([key, value]) => (
-          <li key={key}>
-            <b>{key}:</b>&nbsp;
-            {value.toString() ?? null}
-          </li>
-        ))}
-      </ul>
-    </article>
+    <Center py={6}>
+      <Box
+        maxW={'470px'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.800')}
+        boxShadow={'2xl'}
+        rounded={'md'}
+        overflow={'hidden'}>
+        {/* <Image
+          h={'120px'}
+          w={'full'}
+          src={
+            'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+          }
+          objectFit={'cover'}
+        /> */}
+        <Flex justify={'center'} mt={12}>
+          <Avatar
+            size={'xl'}
+            src={
+              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
+            }
+            alt={'Author'}
+            css={{
+              border: '2px solid white',
+            }}
+          />
+        </Flex>
+        <Box p={6} width={200}>
+          <Stack spacing={0} align={'center'} mb={5}>
+            <Heading fontSize={'xl'} fontWeight={500} fontFamily={'body'}>
+            {profile.handle}
+            </Heading>
+            {/* <Text color={'gray.500'}>Frontend Developer</Text> */}
+          </Stack>
+        </Box>
+      </Box>
+    </Center>
+
   );
 }
 

@@ -72,6 +72,7 @@ import { UseProfilePublicationRevenue } from './revenue/UseProfilePublicationRev
 import { UsePublicationRevenue } from './revenue/UsePublicationRevenue';
 
 
+
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum, polygonMumbai],
   [
