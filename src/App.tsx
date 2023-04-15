@@ -112,6 +112,7 @@ const toastNotification = (error: Error) => toast.error(error.message);
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
+import Index from './welcome';
 
 export function App() {
   return (
@@ -126,6 +127,7 @@ export function App() {
                 <Breadcrumbs />
                 <GenericErrorBoundary fallback={ErrorMessage}>
                   <Routes>
+                    <Route path="/welcome" element={<Index />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/authentication" element={<AuthenticationPage />} />
 

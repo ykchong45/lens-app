@@ -74,7 +74,6 @@ export function UseCreateProfile() {
       <h1>
         <code>useCreateProfile</code>
       </h1>
-
       <WhenLoggedInWithProfile>{() => <CreateProfileForm />}</WhenLoggedInWithProfile>
       <UnauthenticatedFallback message="Log in to create new profiles" />
     </div>
