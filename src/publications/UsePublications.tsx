@@ -5,6 +5,8 @@ import { Loading } from '../components/loading/Loading';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
 
+import { Tabs, Tab, TabList, TabPanels, TabPanel, TabIndicator } from '@chakra-ui/react'
+
 export function UsePublications() {
 
   var metadataFilter_disease = {
@@ -17,8 +19,8 @@ export function UsePublications() {
     loading,
     hasMore,
     observeRef,
-  } = useInfiniteScroll(usePublications({ 
-    profileId: profileId('0x770a'),
+  } = useInfiniteScroll(usePublications({
+    profileId: profileId('0x15'),
     metadataFilter: metadataFilter_disease
   }));
 
@@ -38,6 +40,20 @@ export function UsePublications() {
       <h1>
         <code>usePublications</code>
       </h1>
+      <Tabs >
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <p>one!</p>
+          </TabPanel>
+          <TabPanel>
+            <p>two!</p>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
       <div>
         {publications.map((publication) => (
           <PublicationCard key={publication.id} publication={publication} />

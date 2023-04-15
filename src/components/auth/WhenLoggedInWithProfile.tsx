@@ -21,7 +21,7 @@ export function WhenLoggedInWithProfile({ children }: WhenLoggedInWithProfilePro
   const { data: profile, error, loading: profileLoading } = useActiveProfile();
 
   useEffect(() => {
-    console.log("wallet: ",profile)
+    console.log("wallet: ", profile)
   }, [walletLoading, profileLoading, wallet, profile])
 
   // if (walletLoading || profileLoading) {

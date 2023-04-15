@@ -1,26 +1,10 @@
 export const CATEGORIES = [
   {
-    label: 'Authentication',
-    path: '/authentication',
-  },
-  {
-    label: 'Profiles',
-    path: '/profiles',
+    label: 'Profile',
+    path: '/profile',
   },
   {
     label: 'Publications',
     path: '/publications',
-  },
-  {
-    label: 'Discovery',
-    path: '/discovery',
-  },
-  {
-    label: 'Revenue',
-    path: '/revenue',
-  },
-  {
-    label: 'Misc',
-    path: '/misc',
   },
 ];

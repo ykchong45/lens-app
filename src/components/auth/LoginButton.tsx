@@ -32,7 +32,7 @@ export function LoginButton({ handle }: { handle?: string }) {
 
   return (
     <>
-      <ConnectButton />
+      <ConnectButton showBalance={false} />
     </>
   );
 }

@@ -119,19 +119,22 @@ export function App() {
 
     <ChakraProvider>
       <WagmiConfig client={client}>
-        <LensProvider config={lensConfig} onError={toastNotification}>
-          <RainbowKitProvider chains={chains}>
+        <RainbowKitProvider chains={chains}>
+          <LensProvider config={lensConfig} onError={toastNotification}>
             <Router>
               <Header />
               <main>
                 <Breadcrumbs />
                 <GenericErrorBoundary fallback={ErrorMessage}>
                   <Routes>
-                    <Route path="/welcome" element={<Index />} />
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Index />} />
+                    <Route path="/profile" element={<UseCreateProfile />} />
+                    <Route path="/publications" element={<UsePublications />} />
+                    <Route path="/post" element={<UseCreatePost />} />
+
+
                     <Route path="/authentication" element={<AuthenticationPage />} />
 
-                    <Route path="/publications" element={<PublicationsPage />} />
                     <Route path="/publications/usePublication" element={<UsePublication />} />
                     <Route path="/publications/usePublications" element={<UsePublications />} />
                     <Route path="/publications/useComments" element={<UsePublication />} />
@@ -232,8 +235,8 @@ export function App() {
                 <Toaster />
               </main>
             </Router>
-          </RainbowKitProvider>
-        </LensProvider>
+          </LensProvider>
+        </RainbowKitProvider>
       </WagmiConfig>
     </ChakraProvider>
   );
