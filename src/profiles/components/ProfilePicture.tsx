@@ -42,12 +42,14 @@ type ProfilePictureProps = {
 };
 
 export function ProfilePicture({ picture }: ProfilePictureProps) {
-  if (!picture) return <FallbackProfilePicture />;
+  if (picture == '0x770a') return <RemoteProfilePicture url="https://cdn-icons-png.flaticon.com/512/141/141783.png" />
+  else return <RemoteProfilePicture url="https://s3-alpha.figma.com/hub/file/1844050371/ebbfb0be-4adb-45be-baa1-354c4f691440-cover.png" />
+  // if (!picture) return <FallbackProfilePicture />;
 
-  switch (picture.__typename) {
-    case 'MediaSet':
-      return <RemoteProfilePicture url={picture.original.url} />;
-    default:
-      return <FallbackProfilePicture />;
-  }
+  // switch (picture.__typename) {
+  //   case 'MediaSet':
+  //     return <RemoteProfilePicture url={picture.original.url} />;
+  //   default:
+  //     return <FallbackProfilePicture />;
+  // }
 }

@@ -1,6 +1,6 @@
-import { useActiveProfile } from '@lens-protocol/react-web';
-import { Link,NavLink} from 'react-router-dom';//NavLink, Link,
- 
+import { useActiveProfile, useActiveWallet } from '@lens-protocol/react-web';
+import { Link, NavLink } from 'react-router-dom';//NavLink, Link,
+
 import { CATEGORIES } from '../../config';
 import { LoginButton } from '../auth/LoginButton';
 
@@ -33,10 +33,10 @@ export default function Navi() {
 
   return (
     <>
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'} w={'100%'}>
-        {/* <HStack spacing={8} alignItems={'center'}> */}
-          
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'} w={'100%'}>
+          {/* <HStack spacing={8} alignItems={'center'}> */}
+
           <HStack
             as={'nav'}
             spacing={4}
@@ -46,9 +46,9 @@ export default function Navi() {
                 {label}</NavLink>
             ))}
           </HStack>
-        {/* </HStack> */}
-      </Flex>
-    </Box>
+          {/* </HStack> */}
+        </Flex>
+      </Box>
     </>
   )
 }
@@ -56,6 +56,7 @@ export default function Navi() {
 
 
 export function Header() {
+  const { data: wallet } = useActiveWallet();
   const { data: profile } = useActiveProfile();
 
   return (
@@ -89,7 +90,10 @@ export function Header() {
         </div>
       </div>
 
-      <Navi />
+      {
+        wallet && <Navi />
+      }
+      
 
 
       {/* <nav>

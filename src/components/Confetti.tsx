@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Confetti from 'react-confetti';
 import React, { useRef, useEffect } from 'react'
 
@@ -20,28 +20,25 @@ function useMouse() {
   return position;
 }
 
-export const EmojiFountain = () => {
-  const { x: mouseX, y: mouseY } = useMouse()
-  const activeProps = mouseX ? {
-    confettiSource: {
-      w: 0,
-      h: 0,
-      x: mouseX,
-      y: mouseY,
-    },
-  } : {
-    run: false,
-  }
+export const EmojiFountain = ({snow}) => {
+  const snowOpacity = useMemo(() => {
+    if (snow) return 1
+    else return 0
+  }, [snow])
+
   return (
     <>
       <Confetti
+        run={snow}
         style={{ pointerEvents: 'none' }}
         numberOfPieces={100}
         initialVelocityX={2}
         initialVelocityY={5}
         // ref={ref}
+        tweenDuration={5000}
+        recycle={false}
         gravity={0.5}
-        {...activeProps}
+        // {...activeProps}
       />
     </>
   )

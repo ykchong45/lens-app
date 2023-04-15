@@ -41,7 +41,7 @@ export function CommentComposer({ publisher, publicationId }: CommentComposerPro
   };
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} style={{width: '100%'}}>
       <fieldset>
 
         <Textarea name="content"

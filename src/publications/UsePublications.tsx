@@ -5,7 +5,7 @@ import { Loading } from '../components/loading/Loading';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { PublicationCard } from './components/PublicationCard';
 
-import { Tabs, Tab, TabList, TabPanels, TabPanel, TabIndicator, LinkOverlay, LinkBox } from '@chakra-ui/react'
+import { Tabs, Tab, TabList, TabPanels, TabPanel, TabIndicator, LinkOverlay, LinkBox, VStack, HStack, Button } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom'
 
@@ -39,16 +39,16 @@ export function UsePublications({ tag }) {
   if (error) return <ErrorMessage error={error} />;
 
   return (
-    <div>
-      {publications.map((publication) => (
+    <VStack spacing={4}>
+      {publications.map((publication, idx) => (
         <LinkBox>
           <LinkOverlay as={RouterLink} to={`/publication/${publication.id}`}>
-            <PublicationCard reactable={false} key={publication.id} publication={publication}  />
+            <PublicationCard reactable={false} key={publication.id} idx={idx} publication={publication} />
           </LinkOverlay>
         </LinkBox>
       ))}
       {hasMore && <p ref={observeRef}>Loading more...</p>}
-    </div>
+    </VStack>
   )
 
 }
@@ -73,16 +73,19 @@ export function UsePublicationsWrapper() {
 
 
   return (
-    <div>
-      <Tabs onChange={handleTabChange} variant='soft-rounded'>
-        <TabList>
-          {CATEGORIES.map((item) => (
-            <Tab key={item.tag}>{item.name}</Tab>
-          ))}
-        </TabList>
-      </Tabs>
+    <>
+      <HStack justifyContent={'space-between'}>
+        <Tabs my={10} onChange={handleTabChange} variant='soft-rounded'>
+          <TabList>
+            {CATEGORIES.map((item) => (
+              <Tab key={item.tag}>{item.name}</Tab>
+            ))}
+          </TabList>
+        </Tabs>
+        <Button>Post</Button>
+      </HStack>
 
       <UsePublications tag={tag} />
-    </div>
+    </>
   );
 }

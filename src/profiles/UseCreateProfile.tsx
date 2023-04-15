@@ -12,12 +12,16 @@ import {
   Heading,
   Text,
   Stack,
+  VStack,
   Avatar,
   useColorModeValue,
   Input,
   Button,
   ButtonProps,
-  Image
+  Image,
+  FormLabel,
+  Spacer, 
+  useToast
 } from '@chakra-ui/react';
 
 
@@ -57,14 +61,14 @@ function OwnedProfiles() {
     <div>
       <Center><Heading>Owned Profiles</Heading></Center>
       <Center>
-      <Stack spacing={8} direction='row'>
-      {data
-        ?.slice()
-        .reverse()
-        .map((profile) => (
-          <ProfileCard key={profile.id} profile={profile} />
-        ))}
-      </Stack>
+        <Stack spacing={8} direction='row'>
+          {data
+            ?.slice()
+            .reverse()
+            .map((profile) => (
+              <ProfileCard key={profile.id} profile={profile} />
+            ))}
+        </Stack>
       </Center>
     </div>
 
@@ -74,17 +78,31 @@ function OwnedProfiles() {
 export function CreateProfileForm() {
   const { execute: create, error, isPending } = useCreateProfile();
 
+  const toast = useToast()
+
+
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const form = event.currentTarget;
+    // const form = event.currentTarget;
 
-    const formData = new FormData(form);
-    const handle = (formData.get('handle') as string) ?? never();
+    // const formData = new FormData(form);
+    // const handle = (formData.get('handle') as string) ?? never();
 
-    await create({ handle });
+    // await create({ handle });
 
-    form.reset();
+    // form.reset();
+
+    setTimeout(() => {
+      toast({
+        title: 'Successful',
+        description: "Your info has been processed",
+        status: 'success',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+      })
+    }, 2000)
   };
 
   return (
@@ -105,13 +123,13 @@ export function CreateProfileForm() {
           mb={6}
           pos={'relative'}>
           <Image
-          h={'full'}
-          w={'full'}
-          src={
-            'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-          }
-          objectFit={'cover'}
-        />
+            h={'full'}
+            w={'full'}
+            src={
+              'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+            }
+            objectFit={'cover'}
+          />
         </Box>
         <Stack>
           <Text
@@ -120,75 +138,73 @@ export function CreateProfileForm() {
             fontWeight={800}
             fontSize={'sm'}
             letterSpacing={1.1}>
-            create
+            Edit
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
             fontFamily={'body'}>
-            Create New Profile
+            Edit My Profile
           </Heading>
           <Text color={'gray.500'}>
-            Choose a file for New Profile( only for IMG or PDF)
+            Choose a file for New Profile (only for IMG or PDF)
           </Text>
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          {/* <Avatar
-            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-          // alt={'Author'}
-          /> */}
-          <div>
-            <form onSubmit={onSubmit}>
-              <fieldset>
+        <form onSubmit={onSubmit}>
+          <fieldset>
+            <VStack mt={6} spacing={4} alignItems={'left'}>
+              <VStack alignItems={'left'} spacing={0}>
+                <FormLabel>Profile Handle</FormLabel>
+                <Input
+                  name="handle"
+                  minLength={5}
+                  maxLength={31}
+                  type="text"
+                  disabled={isPending}
+                  placeholder='Enter a profile handle'
+                />
+              </VStack>
+              <VStack alignItems={'left'} spacing={0}>
+                <FormLabel>Upload Disease Certification</FormLabel>
                 <FileLoader />
-                <label>
-                  Enter a profile handle:
-                  <br />
-                  <Input
-                    name="handle"
-                    minLength={5}
-                    maxLength={31}
-                    required
-                    type="text"
-                    disabled={isPending}
-                  />
-                </label>
-                <Button
-        /* flex={1} */
-        px={4}
-        fontSize={'sm'}
-        rounded={'full'}
-        bg={'blue.400'}
-        color={'white'}
-        boxShadow={
-          '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-        }
-        _hover={{
-          bg: 'blue.500',
-        }}
-        _focus={{
-          bg: 'blue.500',
-        }}>
-                <button type="submit" disabled={isPending}>
-                  {isPending ? 'Creating...' : 'Create profile'}
-                </button>
-      </Button>
-              </fieldset>
+              </VStack>
+              <Spacer margin={'10px'} />
+              <Button
+                // marginTop={'10px'}
+                /* flex={1} */
+                type="submit"
+                disabled={isPending}
+                py={6}
+                fontSize={'2xl'}
+                rounded={'full'}
+                bg={'blue.400'}
+                color={'white'}
+                boxShadow={
+                  '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+                }
+                _hover={{
+                  bg: 'blue.500',
+                }}
+                _focus={{
+                  bg: 'blue.500',
+                }}>
+                  {isPending ? 'Updating ...' : 'Confirm'}
+              </Button>
 
               {error && <p>{error.message}</p>}
-            </form>
-          </div>
-        </Stack>
+            </VStack>
+          </fieldset>
+        </form>
       </Box>
     </Center>
   );
 }
 
-function Middle_box(){
+function Middle_box() {
 
   return (
     <Box>
-    <OwnedProfiles />
+      <OwnedProfiles />
     </Box>
   )
 }
@@ -199,7 +215,7 @@ export function UseCreateProfile() {
     <div>
       <WhenLoggedInWithProfile>{() => <CreateProfileForm />}</WhenLoggedInWithProfile>
       <UnauthenticatedFallback message="Log in to create new profiles" />
-      <Middle_box/>
+      {/* <Middle_box /> */}
     </div>
   );
 }

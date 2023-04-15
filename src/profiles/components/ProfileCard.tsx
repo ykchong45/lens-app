@@ -69,7 +69,7 @@ type SmallProfileCardProps = {
 export function SmallProfileCard({ profile }: SmallProfileCardProps) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-      <ProfilePicture picture={profile.picture} />
+      <ProfilePicture picture={profile.id} />
       <p>{profile?.handle}</p>
     </div>
   );

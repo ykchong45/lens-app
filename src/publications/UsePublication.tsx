@@ -16,6 +16,8 @@ import { CommentComposer } from './components/CommentComposer';
 import { useEffect, useState } from 'react';
 
 import { useParams } from "react-router-dom";
+import { EmojiFountain } from '../components/Confetti';
+import { VStack } from '@chakra-ui/react';
 
 type CommentsProps = {
   commentsOf: PublicationId;
@@ -48,6 +50,7 @@ export function UsePublication() {
   const { id } = useParams();
   const { data: profile } = useActiveProfile();
   const [pubId, setPubId] = useState<PublicationId>(publicationId(id || '0x1b-0x0118'));
+  const [snow, setSnow] = useState(false)
 
   useEffect(() => {
     console.log("id updated: ", pubId)
@@ -68,8 +71,9 @@ export function UsePublication() {
   if (error) return <ErrorMessage error={error} />;
 
   return (
-    <div>
-      <PublicationCard reactable={true} publication={publication} />
+    <VStack spacing={6}>
+      <EmojiFountain snow={snow} />
+      <PublicationCard reactable={true} publication={publication} setSnow={setSnow} />
 
       {
         profile && <CommentComposer publisher={profile} publicationId={pubId} />
@@ -78,6 +82,6 @@ export function UsePublication() {
       {/* <h3>Comments</h3> */}
 
       <Comments commentsOf={publication.id} />
-    </div>
+    </VStack>
   );
 }

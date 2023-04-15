@@ -12,8 +12,9 @@ import {
 } from '@lens-protocol/react-web';
 import { ReactNode } from 'react';
 import { useInView } from 'react-cool-inview';
-import { Card, CardHeader, CardBody, Flex, Avatar, Box, Heading, Text, IconButton, CardFooter, Button } from '@chakra-ui/react'
-import { BiLike, BiChat, BiShare } from 'react-icons/bi'
+import { Badge, Card, CardHeader, CardBody, Flex, Avatar, Box, Heading, Text, IconButton, CardFooter, Button } from '@chakra-ui/react'
+import { BiChat } from 'react-icons/bi'
+import { BsHeart } from 'react-icons/bs'
 
 import { ProfilePicture } from '../../profiles/components/ProfilePicture';
 import { formatAmount } from '../../utils';
@@ -100,29 +101,31 @@ type PublicationCardProps = {
   publication: Post | Comment | Mirror | PendingPost;
 };
 
-export function PublicationCard({ reactable, publication }: PublicationCardProps) {
+export function PublicationCard({ reactable, publication, setSnow, idx }: PublicationCardProps) {
   if (publication.__typename === 'PendingPost') {
     return (
       <article>
-        <ProfilePicture picture={publication.profile.picture} />
+        <ProfilePicture picture={publication.profile.id} />
         <p>{publication.profile.name ?? `@${publication.profile.handle}`}</p>
         <div>{publication.content}</div>
       </article>
     );
   }
   // console.log("profile pic: ", publication.profile.picture.original.url)
+  const badgeName = idx  % 2 ? "Experience" : "Ask for Help"
+  const badgeColor = idx  % 2 ? "green" : "red"
 
   return (
-    <Card>
-      <CardHeader>
+    <Card variant={'filled'} py={3}>
+      <CardHeader py={0}>
         <Flex spacing='4'>
           <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-            <ProfilePicture picture={publication.profile.picture} />
-
+            <ProfilePicture picture={publication.profile.id} />
             <Box>
               <Heading size='sm'>{publication.profile.name}</Heading>
               <Text>{`@${publication.profile.handle}`}</Text>
             </Box>
+            <Badge colorScheme={badgeColor}>{ badgeName }</Badge>
           </Flex>
         </Flex>
       </CardHeader>
@@ -140,14 +143,11 @@ export function PublicationCard({ reactable, publication }: PublicationCardProps
           },
         }}
       >
-        <Button flex='1' variant='ghost' leftIcon={<BiLike />}>
-          Like
+        <Button flex='1' variant='ghost' leftIcon={<BsHeart />} onClick={() => setSnow(true)}>
+          Hug
         </Button>
         <Button flex='1' variant='ghost' leftIcon={<BiChat />}>
           Comment
-        </Button>
-        <Button flex='1' variant='ghost' leftIcon={<BiShare />}>
-          Share
         </Button>
       </CardFooter>
       }
@@ -167,7 +167,7 @@ export function CollectablePublicationCard({
 }: CollectablePublicationCardProps) {
   return (
     <article>
-      <ProfilePicture picture={publication.profile.picture} />
+      <ProfilePicture picture={publication.profile.id} />
       <p>{publication.profile.name ?? `@${publication.profile.handle}`}</p>
       <p>
         {publication.hidden ? 'This publication has been hidden' : publication.metadata.content}
