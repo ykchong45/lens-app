@@ -69,7 +69,7 @@ export function UsePublication() {
 
   return (
     <div>
-      <PublicationCard publication={publication} />
+      <PublicationCard reactable={true} publication={publication} />
 
       {
         profile && <CommentComposer publisher={profile} publicationId={pubId} />

@@ -6,7 +6,7 @@ dependencies:
     version: 0.10.5
   '@chakra-ui/icons':
     specifier: ^2.0.18
-    version: 2.0.18(@chakra-ui/system@2.5.5)(react@18.2.0)
+    version: 2.0.18(react@18.2.0)
   '@chakra-ui/react':
     specifier: ^2.5.5
     version: 2.5.5(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.35)(framer-motion@10.12.2)(react-dom@18.2.0)(react@18.2.0)
@@ -18,7 +18,7 @@ dependencies:
     version: 11.10.6(@emotion/react@11.10.6)(@types/react@18.0.35)(react@18.2.0)
   '@lens-protocol/react-web':
     specifier: 1.0.1
-    version: 1.0.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+    version: 1.0.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
   '@lens-protocol/wagmi':
     specifier: 1.0.1
     version: 1.0.1(@lens-protocol/react-web@1.0.1)(ethers@5.7.2)(wagmi@0.12.7)
@@ -34,6 +34,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-confetti:
+    specifier: ^6.1.0
+    version: 6.1.0(react@18.2.0)
   react-cool-inview:
     specifier: ^3.0.1
     version: 3.0.1(react@18.2.0)
@@ -42,7 +45,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   react-hot-toast:
     specifier: ^2.4.0
-    version: 2.4.0(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.4.0(react-dom@18.2.0)(react@18.2.0)
   react-icons:
     specifier: ^4.8.0
     version: 4.8.0(react@18.2.0)
@@ -54,7 +57,7 @@ dependencies:
     version: 3.0.2
   wagmi:
     specifier: 0.12.7
-    version: 0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4)
+    version: 0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
 
 devDependencies:
   '@babel/core':
@@ -158,7 +161,7 @@ packages:
       '@babel/traverse': 7.21.4
       '@babel/types': 7.21.4
       convert-source-map: 1.9.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.4
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.0
@@ -195,7 +198,7 @@ packages:
       '@babel/core': 7.21.4
       '@babel/helper-compilation-targets': 7.21.4(@babel/core@7.21.4)
       '@babel/helper-plugin-utils': 7.20.2
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.4
       lodash.debounce: 4.0.8
       resolve: 1.22.3
       semver: 6.3.0
@@ -358,7 +361,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.18.6
       '@babel/parser': 7.21.4
       '@babel/types': 7.21.4
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -667,14 +670,23 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@chakra-ui/icons@2.0.18(@chakra-ui/system@2.5.5)(react@18.2.0):
+  /@chakra-ui/icon@3.0.16(react@18.2.0):
+    resolution: {integrity: sha512-RpA1X5Ptz8Mt39HSyEIW1wxAz2AXyf9H0JJ5HVx/dBdMZaGMDJ0HyyPBVci0m4RCoJuyG1HHG/DXJaVfUTVAeg==}
+    peerDependencies:
+      '@chakra-ui/system': '>=2.0.0'
+      react: '>=18'
+    dependencies:
+      '@chakra-ui/shared-utils': 2.0.5
+      react: 18.2.0
+    dev: false
+
+  /@chakra-ui/icons@2.0.18(react@18.2.0):
     resolution: {integrity: sha512-E/+DF/jw7kdN4/XxCZRnr4FdMXhkl50Q34MVwN9rADWMwPK9uSZPGyC7HOx6rilo7q4bFjYDH3yRj9g+VfbVkg==}
     peerDependencies:
       '@chakra-ui/system': '>=2.0.0'
       react: '>=18'
     dependencies:
-      '@chakra-ui/icon': 3.0.16(@chakra-ui/system@2.5.5)(react@18.2.0)
-      '@chakra-ui/system': 2.5.5(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(react@18.2.0)
+      '@chakra-ui/icon': 3.0.16(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -2307,7 +2319,7 @@ packages:
       - ethers
     dev: false
 
-  /@lens-protocol/gated-content@0.2.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
+  /@lens-protocol/gated-content@0.2.1(@ethersproject/providers@5.7.2)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
     resolution: {integrity: sha512-Zmp0iQZ9okecCOsGOX8B4Y1pVRVOnFVnO/anHJteQUGURszlZKxkUztuumtpOsWL7r+2C8rH52QFw3S8ZrGbkg==}
     peerDependencies:
       '@ethersproject/contracts': ^5.7.0
@@ -2319,10 +2331,7 @@ packages:
     dependencies:
       '@ethersproject/address': 5.7.0
       '@ethersproject/bignumber': 5.7.0
-      '@ethersproject/contracts': 5.7.0
-      '@ethersproject/hash': 5.7.0
       '@ethersproject/providers': 5.7.2
-      '@ethersproject/wallet': 5.7.0
       '@lens-protocol/api-bindings': 0.7.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/domain': 0.7.1(ethers@5.7.2)
       '@lens-protocol/shared-kernel': 0.7.1(ethers@5.7.2)
@@ -2330,7 +2339,7 @@ packages:
       '@lit-protocol/constants': 2.1.62
       '@lit-protocol/crypto': 2.1.62
       '@lit-protocol/encryption': 2.1.62
-      '@lit-protocol/node-client': 2.1.62(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)
+      '@lit-protocol/node-client': 2.1.62(@ethersproject/providers@5.7.2)
       '@lit-protocol/types': 2.1.62
       ethers: 5.7.2
       siwe: 1.1.6(ethers@5.7.2)
@@ -2354,15 +2363,57 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@lens-protocol/react-web@1.0.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4):
+  /@lens-protocol/gated-content@0.2.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Zmp0iQZ9okecCOsGOX8B4Y1pVRVOnFVnO/anHJteQUGURszlZKxkUztuumtpOsWL7r+2C8rH52QFw3S8ZrGbkg==}
+    peerDependencies:
+      '@ethersproject/contracts': ^5.7.0
+      '@ethersproject/hash': ^5.7.0
+      '@ethersproject/providers': ^5.7.2
+      '@ethersproject/wallet': ^5.7.0
+      ethers: ^5.7.2
+      zod: ^3.20.6
+    dependencies:
+      '@ethersproject/address': 5.7.0
+      '@ethersproject/bignumber': 5.7.0
+      '@lens-protocol/api-bindings': 0.7.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/domain': 0.7.1(ethers@5.7.2)
+      '@lens-protocol/shared-kernel': 0.7.1(ethers@5.7.2)
+      '@lens-protocol/storage': 0.7.1(ethers@5.7.2)
+      '@lit-protocol/constants': 2.1.62
+      '@lit-protocol/crypto': 2.1.62
+      '@lit-protocol/encryption': 2.1.62
+      '@lit-protocol/node-client': 2.1.62
+      '@lit-protocol/types': 2.1.62
+      ethers: 5.7.2
+      siwe: 1.1.6(ethers@5.7.2)
+      tslib: 2.5.0
+    transitivePeerDependencies:
+      - '@faker-js/faker'
+      - '@jest/globals'
+      - '@react-native-async-storage/async-storage'
+      - '@web3modal/standalone'
+      - bufferutil
+      - debug
+      - encoding
+      - graphql-ws
+      - jest-mock-extended
+      - jest-when
+      - lokijs
+      - react
+      - react-dom
+      - subscriptions-transport-ws
+      - utf-8-validate
+    dev: false
+
+  /@lens-protocol/react-web@1.0.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-BIaEzqOc9psZMh1TZWRxX2SiFBr+Up2hPn1HjVqzJJzIq58tJV5X1vLhamVVMpXe1TILIG/9pihkO3KIMJnzfg==}
     peerDependencies:
       ethers: ^5.7.2
       react: ^18.2.0
     dependencies:
       '@lens-protocol/api-bindings': 0.7.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
-      '@lens-protocol/gated-content': 0.2.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
-      '@lens-protocol/react': 1.0.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/gated-content': 0.2.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
+      '@lens-protocol/react': 1.0.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/shared-kernel': 0.7.1(ethers@5.7.2)
       '@lens-protocol/storage': 0.7.1(ethers@5.7.2)
       ethers: 5.7.2
@@ -2390,7 +2441,7 @@ packages:
       - zod
     dev: false
 
-  /@lens-protocol/react@1.0.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
+  /@lens-protocol/react@1.0.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-gRIBlnHyqLzs5EzvcLzjqQQutKQe3pkkKD8dEKqRm/slxozzUtZ2edfrBewHtq19f8hGVR07HKUiZjapyY7Gug==}
     peerDependencies:
       ethers: ^5.7.2
@@ -2402,7 +2453,7 @@ packages:
       '@lens-protocol/api-bindings': 0.7.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/blockchain-bindings': 0.7.1(ethers@5.7.2)
       '@lens-protocol/domain': 0.7.1(ethers@5.7.2)
-      '@lens-protocol/gated-content': 0.2.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+      '@lens-protocol/gated-content': 0.2.1(@ethersproject/providers@5.7.2)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
       '@lens-protocol/shared-kernel': 0.7.1(ethers@5.7.2)
       '@lens-protocol/storage': 0.7.1(ethers@5.7.2)
       ethers: 5.7.2
@@ -2465,10 +2516,10 @@ packages:
       ethers: ^5.7.2
       wagmi: 0.12.7
     dependencies:
-      '@lens-protocol/react-web': 1.0.1(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(zod@3.21.4)
+      '@lens-protocol/react-web': 1.0.1(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)
       '@lens-protocol/shared-kernel': 0.7.1(ethers@5.7.2)
       ethers: 5.7.2
-      wagmi: 0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4)
+      wagmi: 0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
     dev: false
 
   /@lit-labs/ssr-dom-shim@1.1.0:
@@ -2489,7 +2540,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@lit-protocol/auth-browser@2.1.62(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0):
+  /@lit-protocol/auth-browser@2.1.62:
     resolution: {integrity: sha512-/4BTl0omR+JUCyJJc93FCiygSn/4ldrbeBuzWYQzuOFh2f6fcY1GJe3ttEoSJUfwu7OblW86YpWAT65b56rACA==}
     dependencies:
       '@lit-protocol/constants': 2.1.62
@@ -2500,7 +2551,38 @@ packages:
       '@walletconnect/ethereum-provider': 2.7.0
       ethers: 5.7.2
       lit-connect-modal: 0.1.11
-      lit-siwe: 1.1.8(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)
+      lit-siwe: 1.1.8
+      tslib: 2.5.0
+      tweetnacl: 1.0.3
+      tweetnacl-util: 0.13.5
+      util: 0.12.5
+      web-vitals: 3.3.1
+    transitivePeerDependencies:
+      - '@ethersproject/contracts'
+      - '@ethersproject/hash'
+      - '@ethersproject/providers'
+      - '@ethersproject/wallet'
+      - '@react-native-async-storage/async-storage'
+      - '@web3modal/standalone'
+      - bufferutil
+      - debug
+      - encoding
+      - lokijs
+      - utf-8-validate
+    dev: false
+
+  /@lit-protocol/auth-browser@2.1.62(@ethersproject/providers@5.7.2):
+    resolution: {integrity: sha512-/4BTl0omR+JUCyJJc93FCiygSn/4ldrbeBuzWYQzuOFh2f6fcY1GJe3ttEoSJUfwu7OblW86YpWAT65b56rACA==}
+    dependencies:
+      '@lit-protocol/constants': 2.1.62
+      '@lit-protocol/misc': 2.1.62
+      '@lit-protocol/misc-browser': 2.1.62
+      '@lit-protocol/types': 2.1.62
+      '@lit-protocol/uint8arrays': 2.1.62
+      '@walletconnect/ethereum-provider': 2.7.0
+      ethers: 5.7.2
+      lit-connect-modal: 0.1.11
+      lit-siwe: 1.1.8(@ethersproject/providers@5.7.2)
       tslib: 2.5.0
       tweetnacl: 1.0.3
       tweetnacl-util: 0.13.5
@@ -2601,11 +2683,11 @@ packages:
     resolution: {integrity: sha512-0v9fa6Sd4xphjlYMZ9L8TTyR7G4YLvp323E8OJ76giuaPla4HXuwSiGMzUOaC6NKraArSrd54CKkHJ/bxEqVDA==}
     dev: false
 
-  /@lit-protocol/node-client@2.1.62(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0):
+  /@lit-protocol/node-client@2.1.62:
     resolution: {integrity: sha512-rLEUleDoJ+AATZfWNWXvy7UdSrUXMyCjpyB5bevVfk9YjIa5rd9BBXdFENCIA+9kLgVOgtND/R1PpEI/vZkMmw==}
     dependencies:
       '@lit-protocol/access-control-conditions': 2.1.62
-      '@lit-protocol/auth-browser': 2.1.62(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)
+      '@lit-protocol/auth-browser': 2.1.62
       '@lit-protocol/bls-sdk': 2.1.62
       '@lit-protocol/constants': 2.1.62
       '@lit-protocol/crypto': 2.1.62
@@ -2621,7 +2703,46 @@ packages:
       ethers: 5.7.2
       jszip: 3.10.1
       lit-connect-modal: 0.1.11
-      lit-siwe: 1.1.8(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0)
+      lit-siwe: 1.1.8
+      node-fetch: 2.6.9
+      tslib: 2.5.0
+      tweetnacl: 1.0.3
+      tweetnacl-util: 0.15.1
+    transitivePeerDependencies:
+      - '@ethersproject/contracts'
+      - '@ethersproject/hash'
+      - '@ethersproject/providers'
+      - '@ethersproject/wallet'
+      - '@react-native-async-storage/async-storage'
+      - '@web3modal/standalone'
+      - bufferutil
+      - debug
+      - encoding
+      - lokijs
+      - utf-8-validate
+    dev: false
+
+  /@lit-protocol/node-client@2.1.62(@ethersproject/providers@5.7.2):
+    resolution: {integrity: sha512-rLEUleDoJ+AATZfWNWXvy7UdSrUXMyCjpyB5bevVfk9YjIa5rd9BBXdFENCIA+9kLgVOgtND/R1PpEI/vZkMmw==}
+    dependencies:
+      '@lit-protocol/access-control-conditions': 2.1.62
+      '@lit-protocol/auth-browser': 2.1.62(@ethersproject/providers@5.7.2)
+      '@lit-protocol/bls-sdk': 2.1.62
+      '@lit-protocol/constants': 2.1.62
+      '@lit-protocol/crypto': 2.1.62
+      '@lit-protocol/ecdsa-sdk': 2.1.62
+      '@lit-protocol/encryption': 2.1.62
+      '@lit-protocol/lit-third-party-libs': 2.1.62
+      '@lit-protocol/misc': 2.1.62
+      '@lit-protocol/misc-browser': 2.1.62
+      '@lit-protocol/nacl': 2.1.62
+      '@lit-protocol/types': 2.1.62
+      '@lit-protocol/uint8arrays': 2.1.62
+      '@walletconnect/ethereum-provider': 2.7.0
+      ethers: 5.7.2
+      jszip: 3.10.1
+      lit-connect-modal: 0.1.11
+      lit-siwe: 1.1.8(@ethersproject/providers@5.7.2)
       node-fetch: 2.6.9
       tslib: 2.5.0
       tweetnacl: 1.0.3
@@ -2761,7 +2882,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll: 2.5.4(@types/react@18.0.35)(react@18.2.0)
-      wagmi: 0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4)
+      wagmi: 0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -3226,7 +3347,7 @@ packages:
       typescript: 4.9.5
     dev: false
 
-  /@wagmi/connectors@0.3.10(@babel/core@7.21.4)(@types/node@18.15.11)(@wagmi/core@0.10.7)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4):
+  /@wagmi/connectors@0.3.10(@babel/core@7.21.4)(@types/node@18.15.11)(@wagmi/core@0.10.7)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5):
     resolution: {integrity: sha512-O9wa6N47TJtpVdBXaONxXXjiq9ahXboGbBnf6m5tb4RIirCzEY7gnsJYYd61k3TQjd9T++xKKKzDTysm37hUHg==}
     peerDependencies:
       '@wagmi/core': '>=0.9.x'
@@ -3242,11 +3363,11 @@ packages:
       '@ledgerhq/connect-kit-loader': 1.0.2
       '@safe-global/safe-apps-provider': 0.15.2
       '@safe-global/safe-apps-sdk': 7.10.1
-      '@wagmi/core': 0.10.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4)
+      '@wagmi/core': 0.10.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)
       '@walletconnect/ethereum-provider': 2.5.2(@types/node@18.15.11)(@web3modal/standalone@2.2.2)(typescript@4.9.5)
       '@walletconnect/legacy-provider': 2.0.0
       '@web3modal/standalone': 2.2.2(react@18.2.0)
-      abitype: 0.3.0(typescript@4.9.5)(zod@3.21.4)
+      abitype: 0.3.0(typescript@4.9.5)
       ethers: 5.7.2
       eventemitter3: 4.0.7
       typescript: 4.9.5
@@ -3266,7 +3387,7 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core@0.10.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4):
+  /@wagmi/core@0.10.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5):
     resolution: {integrity: sha512-D12tGHPzrJPuYoknTZ8DQHpK1AqosbdSNmFXX7EOPKsSfH139PPiLU4L1ZhcS8WprnPDczOT2AN9JNvzYqjyOw==}
     peerDependencies:
       ethers: '>=5.5.1 <6'
@@ -3276,8 +3397,8 @@ packages:
         optional: true
     dependencies:
       '@wagmi/chains': 0.2.14(typescript@4.9.5)
-      '@wagmi/connectors': 0.3.10(@babel/core@7.21.4)(@types/node@18.15.11)(@wagmi/core@0.10.7)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4)
-      abitype: 0.3.0(typescript@4.9.5)(zod@3.21.4)
+      '@wagmi/connectors': 0.3.10(@babel/core@7.21.4)(@types/node@18.15.11)(@wagmi/core@0.10.7)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)
+      abitype: 0.3.0(typescript@4.9.5)
       ethers: 5.7.2
       eventemitter3: 4.0.7
       typescript: 4.9.5
@@ -3918,7 +4039,7 @@ packages:
       through: 2.3.8
     dev: false
 
-  /abitype@0.3.0(typescript@4.9.5)(zod@3.21.4):
+  /abitype@0.3.0(typescript@4.9.5):
     resolution: {integrity: sha512-0YokyAV4hKMcy97Pl+6QgZBlBdZJN2llslOs7kiFY+cu7kMlVXDBpxMExfv0krzBCQt2t7hNovpQ3y/zvEm18A==}
     engines: {pnpm: '>=7'}
     peerDependencies:
@@ -3929,7 +4050,6 @@ packages:
         optional: true
     dependencies:
       typescript: 4.9.5
-      zod: 3.21.4
     dev: false
 
   /acorn-walk@8.2.0:
@@ -3955,7 +4075,7 @@ packages:
     resolution: {integrity: sha512-7Epl1Blf4Sy37j4v9f9FjICCh4+KAQOyXgHEwlyBiAQLbhKdq/i2QQU3amQalS/wPhdPzDXPL5DMR5bkn+YeWg==}
     engines: {node: '>= 8.0.0'}
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.4
       depd: 2.0.0
       humanize-ms: 1.2.1
     transitivePeerDependencies:
@@ -4794,6 +4914,17 @@ packages:
       stream-transform: 3.2.2
     dev: false
 
+  /debug@4.3.4:
+    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+
   /debug@4.3.4(supports-color@8.1.1):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -4805,6 +4936,7 @@ packages:
     dependencies:
       ms: 2.1.2
       supports-color: 8.1.1
+    dev: false
 
   /decamelize@1.2.0:
     resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
@@ -5338,12 +5470,10 @@ packages:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
     engines: {node: '>=4'}
 
-  /goober@2.1.12(csstype@3.1.2):
+  /goober@2.1.12:
     resolution: {integrity: sha512-yXHAvO08FU1JgTXX6Zn6sYCUFfB/OJSX8HHjDSgerZHZmFKAb08cykp5LBw5QnmyMcZyPRMqkdyHUSSzge788Q==}
     peerDependencies:
       csstype: ^3.0.10
-    dependencies:
-      csstype: 3.1.2
     dev: false
 
   /gopd@1.0.1:
@@ -5373,6 +5503,7 @@ packages:
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
+    dev: false
 
   /has-property-descriptors@1.0.0:
     resolution: {integrity: sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==}
@@ -5780,7 +5911,7 @@ packages:
       '@types/trusted-types': 2.0.3
     dev: false
 
-  /lit-siwe@1.1.8(@ethersproject/contracts@5.7.0)(@ethersproject/hash@5.7.0)(@ethersproject/providers@5.7.2)(@ethersproject/wallet@5.7.0):
+  /lit-siwe@1.1.8:
     resolution: {integrity: sha512-gXI8GG0GAClw6G7T9p4p6Kn9ywDo8j2d90ShaYArJdsqqO9gwXfzxF84SMeY+bpsNqqQ3FahrhEwTCHd6w7wNw==}
     peerDependencies:
       '@ethersproject/contracts': ^5.2.0
@@ -5788,10 +5919,20 @@ packages:
       '@ethersproject/providers': ^5.2.0
       '@ethersproject/wallet': ^5.2.0
     dependencies:
-      '@ethersproject/contracts': 5.7.0
-      '@ethersproject/hash': 5.7.0
+      '@spruceid/siwe-parser': 1.1.3
+      '@stablelib/random': 1.0.2
+      apg-js: 4.1.3
+    dev: false
+
+  /lit-siwe@1.1.8(@ethersproject/providers@5.7.2):
+    resolution: {integrity: sha512-gXI8GG0GAClw6G7T9p4p6Kn9ywDo8j2d90ShaYArJdsqqO9gwXfzxF84SMeY+bpsNqqQ3FahrhEwTCHd6w7wNw==}
+    peerDependencies:
+      '@ethersproject/contracts': ^5.2.0
+      '@ethersproject/hash': ^5.4.0
+      '@ethersproject/providers': ^5.2.0
+      '@ethersproject/wallet': ^5.2.0
+    dependencies:
       '@ethersproject/providers': 5.7.2
-      '@ethersproject/wallet': 5.7.0
       '@spruceid/siwe-parser': 1.1.3
       '@stablelib/random': 1.0.2
       apg-js: 4.1.3
@@ -6509,6 +6650,16 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-confetti@6.1.0(react@18.2.0):
+    resolution: {integrity: sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==}
+    engines: {node: '>=10.18'}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.1 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      tween-functions: 1.2.0
+    dev: false
+
   /react-cool-inview@3.0.1(react@18.2.0):
     resolution: {integrity: sha512-ly6i3Pv5p0fvm12NmJGfKS34eOhA+iU43Th+gZ6t3G6UwsxQsWoITHTHzA9pdkOc/3VmnReqvC/hJkQUDGhQFA==}
     peerDependencies:
@@ -6550,14 +6701,14 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.0.35)(react@18.2.0)
     dev: false
 
-  /react-hot-toast@2.4.0(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):
+  /react-hot-toast@2.4.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-qnnVbXropKuwUpriVVosgo8QrB+IaPJCpL8oBI6Ov84uvHZ5QQcTp2qg6ku2wNfgJl6rlQXJIQU5q+5lmPOutA==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      goober: 2.1.12(csstype@3.1.2)
+      goober: 2.1.12
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -7048,6 +7199,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       has-flag: 4.0.0
+    dev: false
 
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
@@ -7180,6 +7332,10 @@ packages:
   /tty-browserify@0.0.1:
     resolution: {integrity: sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==}
     dev: true
+
+  /tween-functions@1.2.0:
+    resolution: {integrity: sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==}
+    dev: false
 
   /tweetnacl-util@0.13.5:
     resolution: {integrity: sha512-/4Q3hpPFAnbBjNLLOmdTdyvInBfZcQBTWy+LWbypmWxAKwOpSQOyyv4ZZts4CoiYtS8Skyix5CkOWytf7XNK9A==}
@@ -7382,7 +7538,7 @@ packages:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
     dev: true
 
-  /wagmi@0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4):
+  /wagmi@0.12.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.5):
     resolution: {integrity: sha512-L1yE+6KVeUNWKLMr2VXTB3bYHYJhC9kjt7HeAo1o4r4P6ZRJiTD7haTP+Lwzd4EqHCsyN4Zzfnb3Eh6RdcVwvA==}
     peerDependencies:
       ethers: '>=5.5.1 <6'
@@ -7395,8 +7551,8 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.29.1
       '@tanstack/react-query': 4.29.1(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.29.1(@tanstack/react-query@4.29.1)
-      '@wagmi/core': 0.10.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)(zod@3.21.4)
-      abitype: 0.3.0(typescript@4.9.5)(zod@3.21.4)
+      '@wagmi/core': 0.10.7(@babel/core@7.21.4)(@types/node@18.15.11)(ethers@5.7.2)(react@18.2.0)(typescript@4.9.5)
+      abitype: 0.3.0(typescript@4.9.5)
       ethers: 5.7.2
       react: 18.2.0
       typescript: 4.9.5
