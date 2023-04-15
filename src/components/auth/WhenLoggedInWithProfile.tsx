@@ -4,7 +4,8 @@ import {
   useActiveWallet,
   WalletData,
 } from '@lens-protocol/react-web';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import { CreateProfileForm } from '../../profiles/UseCreateProfile';
 
 type LoggedInConfig = {
   wallet: WalletData;
@@ -19,17 +20,21 @@ export function WhenLoggedInWithProfile({ children }: WhenLoggedInWithProfilePro
   const { data: wallet, loading: walletLoading } = useActiveWallet();
   const { data: profile, error, loading: profileLoading } = useActiveProfile();
 
-  if (walletLoading || profileLoading) {
-    return null;
+  useEffect(() => {
+    console.log("wallet: ", walletLoading || profileLoading, !wallet, !profile)
+  }, [walletLoading, profileLoading, wallet, profile])
+
+  // if (walletLoading || profileLoading) {
+  //   return null;
+  // }
+
+  if (!wallet) {
+    return <>Please connect wallet</>;
   }
 
-  if (wallet === null) {
-    return null;
-  }
-
-  if (profile === null || error) {
+  if (!profile || error) {
     // TODO guide user to create profile
-    return null;
+    return <CreateProfileForm />;
   }
 
   return <>{children({ wallet, profile })}</>;

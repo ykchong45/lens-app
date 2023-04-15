@@ -22,7 +22,7 @@ function OwnedProfiles() {
   );
 }
 
-function CreateProfileForm() {
+export function CreateProfileForm() {
   const { execute: create, error, isPending } = useCreateProfile();
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

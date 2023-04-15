@@ -119,8 +119,8 @@ export function App() {
 
     <ChakraProvider>
       <WagmiConfig client={client}>
-        <RainbowKitProvider chains={chains}>
-          <LensProvider config={lensConfig} onError={toastNotification}>
+        <LensProvider config={lensConfig} onError={toastNotification}>
+          <RainbowKitProvider chains={chains}>
             <Router>
               <Header />
               <main>
@@ -232,8 +232,8 @@ export function App() {
                 <Toaster />
               </main>
             </Router>
-          </LensProvider>
-        </RainbowKitProvider>
+          </RainbowKitProvider>
+        </LensProvider>
       </WagmiConfig>
     </ChakraProvider>
   );
